@@ -12,25 +12,25 @@ class NLU:
     
     def __init__(self):
         self.intents = {
-            "book": ["book", "schedule", "appointment", "reserve", "make a booking"],
+            "book": ["book", "schedule", "appointment", "reserve", "make a booking", "hire", "need help"],
             "reschedule": ["reschedule", "change", "move", "different time"],
-            "cancel": ["cancel", "not coming", "won't make it"],
-            "check_availability": ["available", "what times", "when are you open", "slots"],
-            "services": ["services", "what do you offer", "types of massage", "menu"],
-            "pricing": ["price", "how much", "cost", "rates"],
-            "hours": ["hours", "open", "when are you open", "business hours"],
-            "deposit": ["deposit", "payment", "pay", "secure"],
-            "help": ["help", "what can you do", "options", "menu"],
-            "greeting": ["hi", "hello", "hey", "good morning", "good afternoon"]
+            "cancel": ["cancel", "not coming", "won't make it", "don't need"],
+            "check_availability": ["available", "what times", "when are you open", "slots", "free"],
+            "services": ["services", "what do you offer", "types of assistance", "menu", "what can you do"],
+            "pricing": ["price", "how much", "cost", "rates", "fees", "charges"],
+            "hours": ["hours", "open", "when are you open", "business hours", "working hours"],
+            "payment": ["payment", "pay", "secure", "billing", "invoice"],
+            "help": ["help", "what can you do", "options", "menu", "assist"],
+            "greeting": ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"]
         }
         
         self.service_keywords = {
-            "swedish": ["swedish", "relaxing", "gentle"],
-            "deep_tissue": ["deep tissue", "deep", "intense", "firm"],
-            "hot_stone": ["hot stone", "stones", "heat"],
-            "aromatherapy": ["aromatherapy", "aroma", "scent", "essential oils"],
-            "sports": ["sports", "athlete", "injury", "recovery"],
-            "couples": ["couples", "together", "romantic", "two people"]
+            "general_assistance": ["general", "assistant", "help", "tasks", "errands", "daily"],
+            "administrative_support": ["admin", "administrative", "documents", "filing", "organization", "paperwork"],
+            "lifestyle_management": ["lifestyle", "shopping", "travel", "personal", "management"],
+            "event_planning": ["event", "party", "gathering", "celebration", "planning", "occasion"],
+            "concierge_services": ["concierge", "reservations", "appointments", "research", "bookings"],
+            "senior_care_assistance": ["senior", "elderly", "care", "companionship", "support"]
         }
 
     def classify_intent(self, message: str) -> str:
@@ -262,7 +262,7 @@ class NLU:
         context = context or {}
         
         if intent == "greeting":
-            return f"Welcome to {BUSINESS_NAME}! 🌿 How can I help you today? You can book an appointment, check our services, or ask about availability."
+            return f"Welcome to {BUSINESS_NAME}! How can I help you today? You can book an appointment, check our services, or ask about availability."
         
         elif intent == "services":
             return SERVICE_MENU
@@ -270,16 +270,16 @@ class NLU:
         elif intent == "pricing":
             price_info = "Here are our prices:\n\n"
             for key, info in SERVICES.items():
-                price_info += f"• {info['name']}: ${info['price']}\n"
+                price_info += f"- {info['name']}: ${info['price']}\n"
             return price_info
         
         elif intent == "hours":
-            hours_info = f"Our business hours:\n\n"
+            hours_info = "Our business hours:\n\n"
             for day, hours in BUSINESS_HOURS.items():
                 if hours['start'] == "closed":
-                    hours_info += f"• {day.capitalize()}: Closed\n"
+                    hours_info += f"- {day.capitalize()}: Closed\n"
                 else:
-                    hours_info += f"• {day.capitalize()}: {hours['start']} - {hours['end']}\n"
+                    hours_info += f"- {day.capitalize()}: {hours['start']} - {hours['end']}\n"
             return hours_info
         
         elif intent == "check_availability":
@@ -290,13 +290,13 @@ class NLU:
         
         elif intent == "book":
             if not context.get("service"):
-                return "I'd be happy to help you book an appointment! What type of massage would you like? You can choose from: Swedish, Deep Tissue, Hot Stone, Aromatherapy, Sports, or Couples massage."
+                return "I'd be happy to help you book a personal assistant! What type of assistance do you need? You can choose from: General Assistance, Administrative Support, Lifestyle Management, Event Planning, Concierge Services, or Senior Care Assistance."
             elif not context.get("date"):
-                return f"Great choice! What date would you like to schedule your {context['service']} massage?"
+                return f"Great choice! What date would you like to schedule your {context['service']} session?"
             elif not context.get("time"):
                 return f"What time would you prefer on {context['date']}?"
             else:
-                return f"Perfect! Let me check if {context['date']} at {context['time']} is available for a {context['service']} massage..."
+                return f"Perfect! Let me check if {context['date']} at {context['time']} is available for {context['service']}..."
         
         elif intent == "reschedule":
             return RESCHEDULE_REQUEST
@@ -308,14 +308,14 @@ class NLU:
                 return "I can help you cancel your appointment. Please provide your phone number so I can look up your booking."
         
         elif intent == "help":
-            return f"""I can help you with:
-• Booking a new appointment
-• Checking availability for specific dates
-• Viewing our services and pricing
-• Rescheduling or canceling appointments
-• Payment and deposit information
+            return """I can help you with:
+- Booking a personal assistant
+- Checking availability for specific dates
+- Viewing our services and pricing
+- Rescheduling or canceling appointments
+- Payment information
 
 What would you like to do?"""
         
         else:
-            return "I'm here to help! You can ask me to book an appointment, check our services, or check availability. What would you like to know?"
+            return "I'm here to help! You can ask me to book a personal assistant, check our services, or check availability. What would you like to know?"

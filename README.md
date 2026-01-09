@@ -1,16 +1,16 @@
-# Massage Parlor Booking Agent
+# Personal Assistant Booking Agent
 
-A comprehensive AI-powered booking and scheduling agent for massage parlors. This system handles client text messages, manages appointments, processes deposits, and provides automated customer service.
+A comprehensive AI-powered booking and scheduling agent for personal assistant services. This system handles client text messages, manages appointments, processes payments, and provides automated customer service.
 
 ## Features
 
-### 🎯 Core Capabilities
+### 🌟 Core Capabilities
 - **Natural Language Processing**: Understands conversational booking requests
 - **Appointment Scheduling**: Intelligent time slot management and availability checking
-- **Deposit Processing**: Secure payment collection via Stripe integration
+- **Payment Processing**: Secure payment collection via Stripe integration
 - **Client Management**: Track client preferences and history
 - **Automated Responses**: Context-aware conversation handling
-- **Multi-Service Support**: Swedish, Deep Tissue, Hot Stone, Aromatherapy, Sports, and Couples massage
+- **Multi-Service Support**: General Assistance, Administrative Support, Lifestyle Management, Event Planning, Concierge Services, and Senior Care Assistance
 
 ### 📱 Communication Features
 - Process text messages from clients
@@ -22,8 +22,7 @@ A comprehensive AI-powered booking and scheduling agent for massage parlors. Thi
 
 ### 💳 Payment Features
 - Stripe integration for secure payments
-- Configurable deposit requirements
-- Automatic refund processing
+- Automatic payment processing
 - Payment verification
 - Receipt generation
 
@@ -41,7 +40,7 @@ A comprehensive AI-powered booking and scheduling agent for massage parlors. Thi
 
 2. **Install dependencies**
 ```bash
-cd massage_booking_agent
+cd companion
 pip install -r requirements.txt
 ```
 
@@ -71,7 +70,7 @@ The API will be available at `http://localhost:5000`
   ```json
   {
     "phone_number": "1234567890",
-    "message": "I'd like to book a Swedish massage"
+    "message": "I'd like to book general assistance"
   }
   ```
 
@@ -99,21 +98,21 @@ The API will be available at `http://localhost:5000`
 
 ### Basic Booking Flow
 
-**Client**: "Hi, I'd like to book a massage"
+**Client**: "Hi, I'd like to book a personal assistant"
 
-**Agent**: "Welcome to Serenity Massage Therapy! 🌿 How can I help you today? You can book an appointment, check our services, or ask about availability."
+**Agent**: "Welcome to Elite Personal Assistants! 🌟 How can I help you today? You can book an appointment, check our services, or ask about availability."
 
 **Client**: "What services do you offer?"
 
 **Agent**: (Displays service menu with prices)
 
-**Client**: "I'd like a deep tissue massage"
+**Client**: "I'd like general assistance"
 
-**Agent**: "Great choice! What date would you like to schedule your deep tissue massage?"
+**Agent**: "Great choice! What date would you like to schedule your general assistance session?"
 
 **Client**: "Tomorrow at 2pm"
 
-**Agent**: (Checks availability, confirms booking, requests deposit if needed)
+**Agent**: (Checks availability, confirms booking, requests payment if needed)
 
 ### Checking Availability
 
@@ -137,7 +136,7 @@ curl -X POST http://localhost:5000/message \
   -H "Content-Type: application/json" \
   -d '{
     "phone_number": "1234567890",
-    "message": "I want to book a Swedish massage tomorrow at 10am"
+    "message": "I want to book general assistance tomorrow at 10am"
   }'
 ```
 
@@ -150,32 +149,31 @@ Edit these settings to customize for your business:
 ```python
 BUSINESS_NAME = "Your Business Name"
 BUSINESS_HOURS = {
-    "monday": {"start": "09:00", "end": "20:00"},
+    "monday": {"start": "08:00", "end": "20:00"},
     # ... other days
 }
 
 SERVICES = {
-    "swedish": {"name": "Swedish Massage", "duration": 60, "price": 80},
+    "general_assistance": {
+        "name": "General Assistance",
+        "duration": 60,
+        "price": 50
+    },
     # ... other services
 }
-
-DEPOSIT_ENABLED = True
-DEPOSIT_TYPE = "percentage"  # or "fixed"
-DEPOSIT_PERCENTAGE = 0.25  # 25%
 ```
 
-### Deposit Configuration
+### Payment Configuration
 
-Configure deposit requirements:
-
-- **Fixed amount**: Set `DEPOSIT_TYPE = "fixed"` and `DEPOSIT_AMOUNT = 20`
-- **Percentage**: Set `DEPOSIT_TYPE = "percentage"` and `DEPOSIT_PERCENTAGE = 0.25`
-- **Per-service**: Specify services requiring deposits in `DEPOSIT_REQUIRED_FOR_SERVICES`
+Configure payment processing:
+- Stripe integration for secure payments
+- Automatic payment verification
+- Support for multiple payment methods
 
 ## Project Structure
 
 ```
-massage_booking_agent/
+companion/
 ├── agent/
 │   └── booking_agent.py       # Main agent logic
 ├── api/
@@ -196,11 +194,31 @@ massage_booking_agent/
 └── README.md                 # This file
 ```
 
+## Services Offered
+
+1. **General Assistance** (60 min) - $50
+   - Daily tasks, errands, scheduling assistance
+
+2. **Administrative Support** (60 min) - $65
+   - Document preparation, organization, filing
+
+3. **Lifestyle Management** (90 min) - $85
+   - Shopping coordination, travel planning
+
+4. **Event Planning** (120 min) - $150
+   - Parties, gatherings, special occasions
+
+5. **Concierge Services** (60 min) - $75
+   - Reservations, appointments, research
+
+6. **Senior Care Assistance** (120 min) - $100
+   - Companionship and basic support services
+
 ## Features in Detail
 
 ### Natural Language Understanding
 The agent understands:
-- Service preferences ("deep tissue", "swedish", "hot stone")
+- Service preferences ("general assistance", "administrative support", "lifestyle management")
 - Date formats ("tomorrow", "next Monday", "January 15")
 - Time formats ("2pm", "14:00", "3:30 PM")
 - Intent classification (booking, cancellation, rescheduling)
@@ -215,10 +233,9 @@ The agent understands:
 
 ### Payment Processing
 - Stripe integration
-- Deposit calculation
 - Payment link generation
-- Refund processing
 - Payment verification
+- Refund processing
 
 ### Client Management
 - Client profiles
@@ -240,7 +257,7 @@ curl -X POST http://localhost:5000/message \
   -H "Content-Type: application/json" \
   -d '{
     "phone_number": "5551234567",
-    "message": "Hi, I'd like to book a massage"
+    "message": "Hi, I'd like to book a personal assistant"
   }'
 ```
 
@@ -295,7 +312,7 @@ For issues or questions:
 
 ## License
 
-This project is provided as-is for use in legitimate massage therapy businesses.
+This project is provided as-is for use in legitimate personal assistant service businesses.
 
 ## Credits
 

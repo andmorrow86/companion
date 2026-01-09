@@ -1,4 +1,4 @@
-# Implementation Guide - Massage Parlor Booking Agent
+# Implementation Guide - Personal Assistant Booking Agent
 
 ## 📋 Table of Contents
 1. [System Overview](#system-overview)
@@ -13,7 +13,7 @@
 
 ## System Overview
 
-The Massage Parlor Booking Agent is a comprehensive AI-powered system that automates client communications, appointment scheduling, and payment processing for massage therapy businesses.
+The Personal Assistant Booking Agent is a comprehensive AI-powered system that automates client communications, appointment scheduling, and payment processing for personal assistant service businesses.
 
 ### Key Capabilities
 
@@ -74,7 +74,7 @@ The Massage Parlor Booking Agent is a comprehensive AI-powered system that autom
 **Key Functions:**
 
 - `classify_intent()` - Determines user intent (booking, cancellation, etc.)
-- `extract_service()` - Identifies massage type from message
+- `extract_service()` - Identifies service type from message
 - `extract_date()` - Parses date (tomorrow, Monday, Jan 15, etc.)
 - `extract_time()` - Parses time (2pm, 14:00, 3:30 PM)
 - `extract_name()` - Extracts client name
@@ -82,10 +82,10 @@ The Massage Parlor Booking Agent is a comprehensive AI-powered system that autom
 
 **Example:**
 ```python
-message = "I want to book a deep tissue massage tomorrow at 2pm"
+message = "I want to book general assistance tomorrow at 2pm"
 intent, data = nlu.parse_booking_request(message)
 # intent: "book"
-# data: {"service": "deep_tissue", "date": "2024-01-15", "time": "14:00"}
+# data: {"service": "general_assistance", "date": "2024-01-15", "time": "14:00"}
 ```
 
 ### 2. Scheduler

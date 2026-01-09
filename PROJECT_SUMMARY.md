@@ -1,8 +1,8 @@
-# Massage Parlor Booking Agent - Project Summary
+# Personal Assistant Booking Agent - Project Summary
 
-## 🎯 Project Overview
+## 🌟 Project Overview
 
-A comprehensive AI-powered booking and scheduling agent designed specifically for massage therapy businesses. This system automates client communications, manages appointments, processes deposits, and provides intelligent natural language understanding for seamless booking experiences.
+A comprehensive AI-powered booking and scheduling agent designed specifically for personal assistant service businesses. This system automates client communications, manages appointments, processes payments, and provides intelligent natural language understanding for seamless booking experiences.
 
 ---
 
@@ -18,16 +18,15 @@ A comprehensive AI-powered booking and scheduling agent designed specifically fo
 - ✅ Availability management with conflict detection
 - ✅ Business hours enforcement
 - ✅ Time slot validation
-- ✅ Booking window restrictions (min 2 hours, max 30 days)
+- ✅ Booking window restrictions (min 4 hours, max 30 days)
 - ✅ Alternative time suggestions
 
-### 3. **Deposit & Payment Processing**
+### 3. **Payment Processing**
 - ✅ Stripe integration for secure payments
-- ✅ Configurable deposit requirements
 - ✅ Payment link generation
 - ✅ Payment verification
 - ✅ Refund processing
-- ✅ Per-service deposit rules
+- ✅ Support for multiple payment methods
 
 ### 4. **Client Management**
 - ✅ Client profiles with contact information
@@ -53,12 +52,12 @@ A comprehensive AI-powered booking and scheduling agent designed specifically fo
 - ✅ Webhook support for payments
 
 ### 7. **Multi-Service Support**
-- ✅ Swedish Massage (60 min) - $80
-- ✅ Deep Tissue Massage (60 min) - $90
-- ✅ Hot Stone Therapy (75 min) - $120
-- ✅ Aromatherapy Massage (60 min) - $95
-- ✅ Sports Massage (60 min) - $85
-- ✅ Couples Massage (90 min) - $200
+- ✅ General Assistance (60 min) - $50
+- ✅ Administrative Support (60 min) - $65
+- ✅ Lifestyle Management (90 min) - $85
+- ✅ Event Planning (120 min) - $150
+- ✅ Concierge Services (60 min) - $75
+- ✅ Senior Care Assistance (120 min) - $100
 
 ### 8. **Conversation Management**
 - ✅ Multi-stage conversation flow
@@ -72,7 +71,7 @@ A comprehensive AI-powered booking and scheduling agent designed specifically fo
 ## 📁 Project Structure
 
 ```
-massage_booking_agent/
+companion/
 ├── agent/
 │   └── booking_agent.py          # Main agent orchestration
 ├── api/
@@ -145,7 +144,6 @@ massage_booking_agent/
 
 3. **Payment Integration**
    - Stripe payment link generation
-   - Deposit calculation
    - Payment verification
    - Refund processing
 
@@ -177,7 +175,7 @@ Test Coverage:
 ✓ Natural Language Understanding
 ✓ Availability Checking
 ✓ Client Management
-✓ Deposit Calculation
+✓ Payment Processing
 ✓ Appointment Validation
 ✓ Services Information
 ✓ Conversation State Management
@@ -185,7 +183,7 @@ Test Coverage:
 
 ### 📊 API Status
 
-**Server Status:** ✅ Running on http://localhost:5001
+**Server Status:** ✅ Running on http://localhost:5000
 
 **Endpoints Tested:**
 - ✅ `/health` - Health check OK
@@ -195,18 +193,18 @@ Test Coverage:
 
 ---
 
-## 🎓 Usage Examples
+## 🎯 Usage Examples
 
 ### Basic Booking Flow
 
 ```
-Client: Hi, I want to book a massage
-Agent: Welcome to Serenity Massage Therapy! 🌿 How can I help you today?
+Client: Hi, I want to book a personal assistant
+Agent: Welcome to Elite Personal Assistants! 🌟 How can I help you today?
 
 Client: What services do you offer?
 Agent: [Displays 6 available services with prices]
 
-Client: I'd like a deep tissue massage
+Client: I'd like general assistance
 Agent: Great choice! What date would you like to schedule?
 
 Client: Tomorrow at 2pm
@@ -221,7 +219,7 @@ curl -X POST http://localhost:5000/message \
   -H "Content-Type: application/json" \
   -d '{
     "phone_number": "5551234567",
-    "message": "Book a Swedish massage for tomorrow at 10am"
+    "message": "Book general assistance for tomorrow at 10am"
   }'
 
 # Check availability
@@ -233,23 +231,23 @@ curl http://localhost:5000/services
 
 ---
 
-## 🔧 Configuration Options
+## ⚙️ Configuration Options
 
 ### Business Settings
 - Business name and branding
 - Operating hours (7 days/week)
 - Service offerings and pricing
-- Deposit requirements
+- Payment methods
 - Booking policies
 
 ### Payment Settings
 - Stripe integration
-- Deposit amounts (fixed or percentage)
-- Per-service deposit rules
+- Payment processing
+- Multiple payment methods
 - Refund policies
 
 ### Scheduling Settings
-- Minimum advance booking (default: 2 hours)
+- Minimum advance booking (default: 4 hours)
 - Maximum advance booking (default: 30 days)
 - Time slot duration (default: 30 minutes)
 - Business hours enforcement
@@ -290,7 +288,7 @@ curl http://localhost:5000/services
 
 ---
 
-## 🎯 Integration Possibilities
+## 🔗 Integration Possibilities
 
 ### Communication Channels
 1. **SMS** - Twilio integration
@@ -372,25 +370,24 @@ curl http://localhost:5000/services
 
 ## 💰 Business Value
 
-### Benefits for Massage Parlors
+### Benefits for Personal Assistant Services
 1. **24/7 Availability** - Book appointments anytime
 2. **Reduced Staff Workload** - Automate routine tasks
 3. **Improved Customer Experience** - Instant responses
-4. **Reduced No-Shows** - Deposit system
-5. **Better Data Management** - Client history tracking
-6. **Increased Efficiency** - Streamlined booking process
-7. **Cost Savings** - Reduced phone staff needs
-8. **Scalability** - Handle more bookings easily
+4. **Better Data Management** - Client history tracking
+5. **Increased Efficiency** - Streamlined booking process
+6. **Cost Savings** - Reduced phone staff needs
+7. **Scalability** - Handle more bookings easily
 
 ### ROI Considerations
 - Initial setup: Minimal (free tools + Stripe fees)
 - Monthly costs: Stripe fees (2.9% + 30¢), optional SMS costs
 - Time savings: 50-80% reduction in booking-related staff time
-- Revenue increase: Reduced no-shows, easier booking process
+- Revenue increase: Easier booking process, improved customer satisfaction
 
 ---
 
-## 🎉 Project Success Metrics
+## 🏆 Project Success Metrics
 
 ### Technical Metrics
 - ✅ All 8 test suites passing
@@ -402,13 +399,13 @@ curl http://localhost:5000/services
 ### Business Metrics (Trackable)
 - Booking conversion rate
 - Average booking time
-- No-show rate reduction
 - Customer satisfaction scores
 - Staff time saved
+- Repeat booking rate
 
 ---
 
-## 📞 Support & Maintenance
+## 🛠️ Support & Maintenance
 
 ### Maintenance Requirements
 1. **Daily** - Monitor error logs, check bookings
@@ -423,7 +420,7 @@ curl http://localhost:5000/services
 
 ---
 
-## 🚦 Deployment Readiness
+## 🚢 Deployment Readiness
 
 ### ✅ Ready for Development/Testing
 - All core features implemented
@@ -440,7 +437,7 @@ curl http://localhost:5000/services
 - Regular backup strategy
 - Security audit
 
-### 📋 Production Checklist
+### ✅ Production Checklist
 - [ ] Database setup and migration
 - [ ] SSL certificate installation
 - [ ] Domain configuration
@@ -468,9 +465,9 @@ This project demonstrates:
 
 ---
 
-## 🏆 Conclusion
+## 🏁 Conclusion
 
-The Massage Parlor Booking Agent is a fully functional, production-ready system for automating massage therapy business operations. It successfully combines:
+The Personal Assistant Booking Agent is a fully functional, production-ready system for automating personal assistant service business operations. It successfully combines:
 
 - **Intelligent conversation management**
 - **Robust scheduling logic**
